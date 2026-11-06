@@ -614,6 +614,33 @@ p {
     color: #f4faf6;
 }
 
+.genplan-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem 1.25rem;
+    margin: 0 0 1rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+}
+
+.genplan-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.leg {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 0.2rem;
+    display: inline-block;
+}
+
+.leg-free { background: #6fa37f; }
+.leg-hold { background: #d4a017; }
+.leg-sold { background: #8a9190; }
+
 .genplan {
     position: relative;
     border-radius: var(--radius);
@@ -622,20 +649,140 @@ p {
     background: #dfe8e2;
 }
 
-.genplan img {
-    width: 100%;
-    max-height: 640px;
-    object-fit: cover;
-    object-position: center;
+.genplan-toolbar {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 2;
+    display: flex;
+    gap: 0.35rem;
+    padding: 0.3rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, white 88%, transparent);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(8px);
 }
 
-.genplan-overlay {
-    position: absolute;
-    inset: auto 0 0;
-    display: flex;
-    justify-content: center;
-    padding: 1.5rem;
-    background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--ink) 55%, transparent));
+.genplan-toolbar button {
+    min-width: 2.2rem;
+    min-height: 2.2rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font: 700 1rem/1 var(--font);
+    cursor: pointer;
+}
+
+.genplan-toolbar button:hover {
+    background: var(--mist);
+}
+
+.genplan-viewport {
+    overflow: auto;
+    max-height: min(70vh, 640px);
+    cursor: grab;
+    touch-action: pan-x pan-y;
+}
+
+.genplan-viewport.is-dragging {
+    cursor: grabbing;
+}
+
+.genplan-viewport img {
+    width: 100%;
+    max-width: none;
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.15s ease;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.mid-cta {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.35rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, white 72%, var(--mist));
+}
+
+.mid-cta p {
+    margin: 0;
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.faq-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.faq-list details {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: color-mix(in srgb, white 75%, var(--mist));
+    padding: 0.35rem 1.1rem 0.35rem;
+}
+
+.faq-list summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.95rem 0;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.faq-list summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-list summary::after {
+    content: "+";
+    float: right;
+    color: var(--moss);
+    font-weight: 700;
+}
+
+.faq-list details[open] summary::after {
+    content: "–";
+}
+
+.faq-list details p {
+    margin: 0 0 1rem;
+    padding-right: 1.5rem;
+}
+
+.lead-promise {
+    color: var(--ink) !important;
+    font-weight: 500;
+}
+
+.consent {
+    display: grid !important;
+    grid-template-columns: auto 1fr;
+    gap: 0.65rem;
+    align-items: start;
+    font-weight: 500 !important;
+    color: var(--ink-soft) !important;
+}
+
+.consent input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.15rem;
+    accent-color: var(--forest);
+}
+
+.embed-lazy {
+    display: grid;
+    place-items: center;
+    min-height: 280px;
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--mist) 70%, white), #d7e2db);
 }
 
 .tabs {
@@ -896,6 +1043,11 @@ p {
         align-items: start;
     }
 
+    .mid-cta {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+
     .pay-grid {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -908,13 +1060,11 @@ p {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .gallery-grid figure:nth-child(1),
-    .gallery-grid figure:nth-child(6) {
+    .gallery-grid figure:nth-child(1) {
         grid-column: span 2;
     }
 
-    .gallery-grid figure:nth-child(1) img,
-    .gallery-grid figure:nth-child(6) img {
+    .gallery-grid figure:nth-child(1) img {
         min-height: 260px;
     }
 
