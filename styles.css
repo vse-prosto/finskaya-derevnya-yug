@@ -306,12 +306,13 @@ p {
 
 .hero-content {
     position: relative;
-    padding: 7rem 0 4rem;
+    padding: 6.5rem 0 3.5rem;
+    max-width: 40rem;
 }
 
 .hero-kicker,
 .eyebrow {
-    margin: 0 0 0.85rem;
+    margin: 0 0 0.75rem;
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -327,60 +328,56 @@ p {
 }
 
 .hero h1 {
-    max-width: 12ch;
+    max-width: none;
+    margin-bottom: 0.35rem;
     color: #fff;
+    font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+    line-height: 1.05;
     text-wrap: balance;
 }
 
-.hero-lead {
-    max-width: 34rem;
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    color: color-mix(in srgb, white 86%, transparent);
-}
-
-.hero-proof {
-    margin: -0.35rem 0 0;
-    font-size: 0.95rem;
-    color: color-mix(in srgb, white 78%, transparent);
-}
-
-.hero-proof a {
+.hero-price {
+    margin: 0 0 0.85rem;
+    font-family: var(--display);
+    font-size: clamp(1.55rem, 3.2vw, 2.15rem);
+    font-weight: 650;
+    letter-spacing: -0.02em;
     color: #fff;
-    font-weight: 700;
+    line-height: 1.15;
+}
+
+.hero-lead {
+    max-width: 28rem;
+    margin-bottom: 0;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.45;
+    color: color-mix(in srgb, white 88%, transparent);
 }
 
 .hero-cta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin: 1.75rem 0 2.5rem;
+    margin: 1.5rem 0 1.35rem;
 }
 
-.hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin: 0;
-    max-width: 40rem;
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 1.1rem;
+    align-items: center;
+    font-size: 0.92rem;
+    color: color-mix(in srgb, white 78%, transparent);
 }
 
-.hero-stats div {
-    padding-top: 0.85rem;
-    border-top: 1px solid color-mix(in srgb, white 28%, transparent);
-}
-
-.hero-stats dt {
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: color-mix(in srgb, white 65%, transparent);
-}
-
-.hero-stats dd {
-    margin: 0.25rem 0 0;
-    font-family: var(--display);
-    font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+.hero-meta a {
     color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.hero-meta a:hover {
+    text-decoration: underline;
 }
 
 .section {
